@@ -10,15 +10,17 @@ app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "ejs");
 
-app.use(
-    express.static(path.join(__dirname, "public"), {maxAge: 31557600000})
-);
+app.use(express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname, '..', 'node_modules'));
+
+app.use('/room/static/', express.static(path.join(__dirname, "public", "room")));
+app.use('/room/scripts/', express.static(path.join(__dirname, '..', 'node_modules')));
 
 /**
  * Primary app routes.
  */
 
 app.get('/', homeController.index);
-app.get('/room/:token', roomController.index);
+app.get('/room/:roomName', roomController.index);
 
 export default app

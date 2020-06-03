@@ -10,7 +10,6 @@ export class User {
     public name: string;
     public role: number;
     public cam: any;
-    session: any;
 
     constructor(id: number, name: string, role: number) {
         this.id = id;

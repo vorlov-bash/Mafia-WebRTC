@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import {Request, Response} from "express";
 
 export const index = (req: Request, res: Response) => {
-    res.render("room", {"title": "room"})
+    res.render("room/client", {"roomName": req.params.roomName});
 };
 
 // export const createRoom = (req: Request, res: Response) => {
