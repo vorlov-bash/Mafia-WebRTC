@@ -1,26 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="scripts/simplewebrtc/out/simplewebrtc-with-adapter.bundle.js"></script>
     <script src="scripts/jquery/dist/jquery.min.js"></script>
+    <script>var DEFAULT_CHANNEL = '<%= roomName %>';</script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="static/js/apprtc.js"></script>
+
+    <link rel="stylesheet" href="static/css/room.css">
+    <title><%= title %></title>
 </head>
-<body>
-<video id="localVideo" style="width: 250px; height: 150px;" autoplay></video>
-<!--<video id="cam2" style="width: 250px; height: 150px; background: #000000"></video>-->
-<!--<video id="cam3" style="width: 250px; height: 150px; background: #000000"></video>-->
-<!--<video id="cam4" style="width: 250px; height: 150px; background: #000000"></video>-->
-<!--<video id="cam5" style="width: 250px; height: 150px; background: #000000"></video>-->
-<!--<video id="cam6" style="width: 250px; height: 150px; background: #000000"></video>-->
-<!--<video id="cam7" style="width: 250px; height: 150px; background: #000000"></video>-->
-<div class="presenterMenu">
-    <button class="setNight">SET NIGHT</button>
-    <button class="setDat">SET DAY</button>
-    <button class="startGame">START GAME</button>
-    <button class="endGame">END GAME</button>
-    <button class="leave">Leave</button>
+<body onload='init()'>
+<div class="top_header">
+    <img class="logo" src="/room/static/img/mafia_pic.jpg">
+    <button class="exit">Вийти</button>
 </div>
+<div class="table">
+    <div class="zero" style="visibility: visible"></div>
+    <div class="first" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="second" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="third" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="fourth" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="fifth" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="sixth" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="seventh" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+</div>
+<div class="bottom">
+    <div class="menu">
+        <button class="set-night">SET NIGHT</button>
+        <button class="set-day">SET DAY</button>
+        <button class="start">START</button>
+        <button class="stop">STOP</button>
+    </div>
+</div>
+<button class="gear"></button>
 </body>
 </html>

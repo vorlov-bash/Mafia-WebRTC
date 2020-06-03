@@ -1,0 +1,210 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("/room/static/img/back.jpg");
+    background-size: cover;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 90%;
+}
+
+.top_header {
+    background: #000;
+    opacity: 0.5;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit {
+
+    font-family: Book Antiqua;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: center;
+    color: #E0E0E0;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 80px;
+}
+
+.table {
+    position: absolute;
+    width: 976px;
+    height: 509px;
+    border-radius: 272px;
+    background-image: url("/room/static/img/table.png");
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+video {
+    width: 250px;
+    height: 150px;
+    pointer-events: none;
+    border-image: url("/room/static/img/border.png");
+    border-radius: 30px;
+    border-width: 3px;
+}
+
+.zero {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    border-image: url("/room/static/img/border.png");
+    border-radius: 30px;
+    border-width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -100px;
+}
+
+.first {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -200px;
+    left: 375px;
+}
+
+.second {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -130px;
+    left: 550px;
+}
+
+.third {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -50px;
+    left: 375px;
+}
+
+.fourth {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -140px;
+}
+
+.fifth {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -350px;
+    right: 375px;
+}
+
+.sixth {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -725px;
+    right: 550px;
+}
+
+.seventh {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: -1100px;
+    right: 375px;
+}
+
+.options {
+    display: flex;
+    position: relative;
+    width: 100px;
+    height: 31px;
+    background: #B19044;
+    left: 75px;
+    top: -31px;
+}
+
+.close {
+    background: url("/room/static/img/close.png") no-repeat scroll 0 0 transparent;
+    position: relative;
+    width: 50px;
+    height: 23px;
+    margin: 5px;
+}
+
+.micro {
+    background: url("/room/static/img/micro.png") no-repeat scroll 0 0 transparent;
+    position: relative;
+    width: 50px;
+    height: 23px;
+    margin: 5px;
+}
+
+.film {
+    background: url("/room/static/img/cam.png") no-repeat scroll 0 0 transparent;
+    position: relative;
+    width: 70px;
+    height: 23px;
+    margin: 3px;
+}
+
+.bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    height: 500px;
+    width: 250px;
+}
+
+.gear {
+    background: url("/room/static/img/settings.png") no-repeat scroll 0 0 transparent;
+    width: 70px;
+    height: 70px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.menu button {
+    display: block;
+    top: -100px;
+    width: 250px;
+    height: 100px;
+    background: no-repeat scroll 0 0 transparent;
+    color: white;
+    font-family: Book Antiqua;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: center;
+}
