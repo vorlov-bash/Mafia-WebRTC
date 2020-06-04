@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && nodemon src/server.js",
-    "startSignaling": "tsc && nodemon src/signaling-server/signaling.js",
+    "startSignaling": "tsc && nodemon src/sockets/signaling.js",
     "tsc": "tsc"
   },
   "repository": {
@@ -29,7 +29,7 @@
     "jquery": "^3.5.1",
     "nodemon": "^2.0.4",
     "simplewebrtc": "^3.0.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^1.4.8",
     "typescript": "^3.9.3"
   }
 }

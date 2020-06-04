@@ -1,27 +1,29 @@
 /** CONFIG **/
-var SIGNALING_SERVER = "http://91.192.105.5:8080";
-var USE_AUDIO = true;
-var USE_VIDEO = true;
+let SIGNALING_SERVER = "http://172.16.15.135:10080";
+let USE_AUDIO = true;
+let USE_VIDEO = true;
 
-var MUTE_AUDIO_BY_DEFAULT = false;
+let MUTE_AUDIO_BY_DEFAULT = false;
 
 /** You should probably use a different stun server doing commercial stuff **/
 /** Also see: https://gist.github.com/zziuni/3741933 **/
-var ICE_SERVERS = [
+let ICE_SERVERS = [
     {url: "stun:stun.l.google.com:19302"}
 ];
-var signaling_socket = null;   /* our socket.io connection to our webserver */
-var local_media_stream = null; /* our own microphone / webcam */
-var peers = {};                /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
-var peer_media_elements = {};  /* keep track of our <video>/<audio> tags, indexed by peer_id */
+let signaling_socket = null;
+let local_media_stream = null;
+let peers = {};
+let peer_media_elements = {};
+let info = {};
 
 function init() {
     console.log("Connecting to signaling server");
     signaling_socket = io(SIGNALING_SERVER);
-
     signaling_socket.on('connect', function () {
         console.log("Connected to signaling server");
-        setup_local_media(() => {
+        let our_socketID = signaling_socket.id;
+
+        setup_local_media(signaling_socket.id, () => {
             /* once the user has given us access to their
              * microphone/camcorder, join the channel and start peering up */
             join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
@@ -58,14 +60,16 @@ function init() {
      * connections in the network).
      */
     signaling_socket.on('addPeer', function (config) {
+        console.log(peers);
+        console.log();
         console.log('Signaling server said to add peer:', config);
-        var peer_id = config.peer_id;
+        let peer_id = config.peer_id;
         if (peer_id in peers) {
             /* This could happen if the user joins multiple channels where the other peer is also in. */
             console.log("Already connected to peer ", peer_id);
             return;
         }
-        var peer_connection = new RTCPeerConnection(
+        let peer_connection = new RTCPeerConnection(
             {"iceServers": ICE_SERVERS},
             {"optional": [{"DtlsSrtpKeyAgreement": true}]} /* this will no longer be needed by chrome
                                                                         * eventually (supposedly), but is necessary
@@ -85,8 +89,7 @@ function init() {
             }
         };
         peer_connection.onaddstream = function (event) {
-            console.log("onAddStream", event);
-            var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
+            let remote_media = USE_VIDEO ? $(`<video id=${event.stream.id}>`) : $("<audio>");
             remote_media.attr("autoplay", "autoplay");
             if (MUTE_AUDIO_BY_DEFAULT) {
                 remote_media.attr("muted", "true");
@@ -136,13 +139,13 @@ function init() {
      */
     signaling_socket.on('sessionDescription', function (config) {
         console.log('Remote description received: ', config);
-        var peer_id = config.peer_id;
-        var peer = peers[peer_id];
-        var remote_description = config.session_description;
+        let peer_id = config.peer_id;
+        let peer = peers[peer_id];
+        let remote_description = config.session_description;
         console.log(config.session_description);
 
-        var desc = new RTCSessionDescription(remote_description);
-        var stuff = peer.setRemoteDescription(desc,
+        let desc = new RTCSessionDescription(remote_description);
+        let stuff = peer.setRemoteDescription(desc,
             function () {
                 console.log("setRemoteDescription succeeded");
                 if (remote_description.type == "offer") {
@@ -157,7 +160,7 @@ function init() {
                                     console.log("Answer setLocalDescription succeeded");
                                 },
                                 function () {
-                                    Alert("Answer setLocalDescription failed!");
+                                    alert("Answer setLocalDescription failed!");
                                 }
                             );
                         },
@@ -180,8 +183,8 @@ function init() {
      * can begin trying to find the best path to one another on the net.
      */
     signaling_socket.on('iceCandidate', function (config) {
-        var peer = peers[config.peer_id];
-        var ice_candidate = config.ice_candidate;
+        let peer = peers[config.peer_id];
+        let ice_candidate = config.ice_candidate;
         peer.addIceCandidate(new RTCIceCandidate(ice_candidate));
     });
 
@@ -198,7 +201,7 @@ function init() {
      */
     signaling_socket.on('removePeer', function (config) {
         console.log('Signaling server said to remove peer:', config);
-        var peer_id = config.peer_id;
+        let peer_id = config.peer_id;
         if (peer_id in peer_media_elements) {
             peer_media_elements[peer_id].remove();
         }
@@ -209,6 +212,16 @@ function init() {
         delete peers[peer_id];
         delete peer_media_elements[config.peer_id];
     });
+
+    /** Game stuff **/
+    signaling_socket.on('cardDealing', function (data) {
+
+    })
+
+    signaling_socket.on('transferData', function (data) {
+        info = data.player;
+        console.log(`Data received: ${info}`)
+    })
 }
 
 
@@ -216,7 +229,8 @@ function init() {
 /** Local media stuff **/
 
 /***********************/
-function setup_local_media(callback, errorback) {
+
+function setup_local_media(s_id, callback, errorback) {
     if (local_media_stream != null) {  /* ie, if we've already been initialized */
         if (callback) callback();
         return;
@@ -238,39 +252,25 @@ function setup_local_media(callback, errorback) {
 
     appendSeat = function appendSeat(media) {
         const table = $('.table');
-        const childs = table.children();
-        const camsCount = childs.find('video').length;
-        console.log(media);
-        $(childs[camsCount]).css("visibility", "visible");
-        $(childs[camsCount]).append(media);
+        const childrens = table.children();
+        const camsCount = childrens.find('video').length;
+        $(childrens[camsCount]).css("visibility", "visible");
+        $(childrens[camsCount]).append(media);
     };
 
-    checkSeat = function checkSeat() {
-        const table = $('.table');
-        const child = table.children();
-        const camsCount = child.find('video').length;
-        return camsCount !== 8;
-    };
 
     navigator.getUserMedia({"audio": USE_AUDIO, "video": USE_VIDEO},
         function (stream) { /* user accepted access to a/v */
             console.log("Access granted to audio/video");
             local_media_stream = stream;
             let table = $('.table');
-            var local_media = USE_VIDEO ? $("<video>") : $("<audio>");
+            let local_media = USE_VIDEO ? $(`<video id="${s_id}">`) : $("<audio>");
             local_media.attr("autoplay", "autoplay");
             local_media.attr('width', "250");
             local_media.attr('height', '150');
             local_media.prop('muted', true);
             local_media.attr("controls", "");
-
-            if (!(checkSeat())) {
-                alert('Мест нету.');
-                document.location.href = '/';
-                return;
-            } else {
-                appendSeat(local_media)
-            }
+            appendSeat(local_media);
             console.log(local_media[0]);
             attachMediaStream(local_media[0], stream);
 

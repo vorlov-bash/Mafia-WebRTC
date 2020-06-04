@@ -56,16 +56,23 @@ video {
     width: 250px;
     height: 150px;
     pointer-events: none;
-    border-image: url("/room/static/img/border.png");
-    border-radius: 30px;
-    border-width: 3px;
+    position: absolute;
 }
 
-.zero {
+.options {
+    position: absolute;
+}
+
+.card {
+    width: 180px;
+    height: 120px;
+}
+
+.cam0 {
     position: relative;
     width: 250px;
     height: 150px;
-    border-image: url("/room/static/img/border.png");
+    border-image: url("/room/static/img/border.jpg");
     border-radius: 30px;
     border-width: 30px;
     margin-left: auto;
@@ -73,7 +80,7 @@ video {
     top: -100px;
 }
 
-.first {
+.cam1 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -83,7 +90,7 @@ video {
     left: 375px;
 }
 
-.second {
+.cam2 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -93,7 +100,7 @@ video {
     left: 550px;
 }
 
-.third {
+.cam3 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -103,7 +110,7 @@ video {
     left: 375px;
 }
 
-.fourth {
+.cam4 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -112,7 +119,7 @@ video {
     top: -140px;
 }
 
-.fifth {
+.cam5 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -122,7 +129,7 @@ video {
     right: 375px;
 }
 
-.sixth {
+.cam6 {
     position: relative;
     width: 250px;
     height: 150px;
@@ -132,7 +139,7 @@ video {
     right: 550px;
 }
 
-.seventh {
+.cam7 {
     position: relative;
     width: 250px;
     height: 150px;

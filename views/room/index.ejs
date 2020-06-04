@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <script src="scripts/jquery/dist/jquery.min.js"></script>
-    <script>var DEFAULT_CHANNEL = '<%= roomName %>';</script>
+    <script>var DEFAULT_CHANNEL = '<%= roomID %>';</script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script src="static/js/apprtc.js"></script>
+    <script src="static/js/defaultRTC.js"></script>
 
     <link rel="stylesheet" href="static/css/room.css">
     <title><%= title %></title>
@@ -15,65 +15,21 @@
     <button class="exit">Вийти</button>
 </div>
 <div class="table">
-    <div class="zero" style="visibility: visible"></div>
-    <div class="first" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam0" style="visibility: hidden"></div>
+    <div class="cam1" style="visibility: hidden">
     </div>
-    <div class="second" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam2" style="visibility: hidden">
     </div>
-    <div class="third" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam3" style="visibility: hidden">
     </div>
-    <div class="fourth" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam4" style="visibility: hidden">
     </div>
-    <div class="fifth" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam5" style="visibility: hidden">
     </div>
-    <div class="sixth" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam6" style="visibility: hidden">
     </div>
-    <div class="seventh" style="visibility: hidden">
-        <div class="options">
-            <button class="film"></button>
-            <button class="micro"></button>
-            <button class="close"></button>
-        </div>
+    <div class="cam7" style="visibility: hidden">
     </div>
 </div>
-<div class="bottom">
-    <div class="menu">
-        <button class="set-night">SET NIGHT</button>
-        <button class="set-day">SET DAY</button>
-        <button class="start">START</button>
-        <button class="stop">STOP</button>
-    </div>
-</div>
-<button class="gear"></button>
 </body>
 </html>

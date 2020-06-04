@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <script src="scripts/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>const ROOM_ID = '<%= roomID %>'</script>
+    <script src="static/js/objects.js"></script>
+    <script src="static/js/presenterRTC.js"></script>
+    <script src="static/js/mafia-game.js"></script>
+
+    <link rel="stylesheet" href="static/css/room.css">
+    <title><%= title %></title>
+</head>
+<body>
+<div class="top_header">
+    <img class="logo" src="/room/static/img/mafia_pic.jpg">
+    <button class="exit">Вийти</button>
+</div>
+<div class="table">
+    <div class="cam0" style="visibility: visible"></div>
+    <div class="cam1" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam2" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam3" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam4" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam5" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam6" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+    <div class="cam7" style="visibility: hidden">
+        <div class="options">
+            <button class="film"></button>
+            <button class="micro"></button>
+            <button class="close"></button>
+        </div>
+    </div>
+</div>
+<div class="bottom" hidden>
+    <div class="menu">
+        <button class="set-night">SET NIGHT</button>
+        <button class="set-day">SET DAY</button>
+        <button class="start">START</button>
+        <button class="stop">STOP</button>
+    </div>
+</div>
+<button class="gear"></button>
+</body>
+</html>
