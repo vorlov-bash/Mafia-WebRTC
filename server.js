@@ -1,14 +1,13 @@
-const http = require('http')
-const util = require('util')
-const path = require('path')
+const http = require('http');
+const util = require('util');
+const path = require('path');
 
-const Koa = require('koa')
-const views = require('koa-views')
-const serve = require('koa-static')
+const Koa = require('koa');
+const views = require('koa-views');
+const serve = require('koa-static');
 
-const {IO} = require('./src/socket_utils/socket-node')
-const {Router} = require('./src/router/router')
-const config = require('./config')
+const {IO} = require('./src/socket_utils/socket-node');
+const {Router} = require('./src/router/router');
 
 const Server = {
     app: null,
