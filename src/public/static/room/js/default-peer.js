@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    $('.exit').on('click', () => {
+        window.location.href = '/';
+    });
+});
+
 let peers = {};
 let role = null;
 const mediaPlayer = {
@@ -17,7 +23,6 @@ const mediaPlayer = {
 
     attachToStream: function (stream, div_num, block_id, muted) {
         let body = $(`div.c${div_num}`);
-        console.log(body);
         if (muted) {
             body.html(`<video autoplay playsinline muted></video>`);
         } else {
@@ -151,7 +156,6 @@ socket.on('remove_peer', (config) => {
 });
 
 socket.on('receiveRole', data => {
-    console.log('role:', data.role);
     role = data.role;
     mediaPlayer.attachRole(data.role)
 });
@@ -179,3 +183,4 @@ socket.on('awake', data => {
 socket.on('sleep', data => {
     mediaPlayer.peer_media_elements[data.presenter].srcObject.getTracks().forEach(t => t.enabled = false)
 });
+

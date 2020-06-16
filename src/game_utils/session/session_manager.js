@@ -62,7 +62,6 @@ exports.sessionManager = {
         if (!(players_count)) {
             session.players[socket_id] = await Player(socket_id, session.names.pop(), 1);
         } else {
-            // @ts-ignore
             const pos = await getNicePosition([...Array(players_count).keys()].map(i => Object.values(session.players)[i].position));
             session.players[socket_id] = await Player(socket_id, session.names.pop(), pos);
 
@@ -76,11 +75,6 @@ exports.sessionManager = {
         delete session.players[socket_id];
         return session.players;
     },
-
-    // deletePresenter: (room_id) => {
-    //     let session = sessionMap[room_id];
-    //     session.presenter = null;
-    // },
 
     setDay: (room_id) => {
         let session = sessionMap[room_id];

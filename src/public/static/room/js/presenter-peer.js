@@ -40,7 +40,6 @@ const mediaPlayer = {
             let awk_btn = $('<button type="button" class="btn btn-secondary awk-btn">Разбудить</button>').on('click', function () {
                 let socket_id = $(this).parent().parent().attr('id');
                 // _this.peer_media_elements[socket_id].srcObject.getTracks().forEach(t => t.enabled = true);
-                console.log(socket_id);
                 socket.emit('awake', {'socket_id': socket_id})
             });
 
@@ -202,4 +201,6 @@ socket.on('receiveRoles', data => {
     for (let [socket_id, role] of Object.entries(roles)) {
         mediaPlayer.attachRole(socket_id, role)
     }
-})
+});
+
+

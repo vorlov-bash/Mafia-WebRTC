@@ -20,7 +20,6 @@ exports.IO = {
 
             socket.on('disconnect', () => {
                 let room = this.socket_room[socket.id];
-                console.log(socket.adapter.rooms[room]);
                 if (socket.adapter.rooms[room]) {
                     Object.keys(socket.adapter.rooms[room].sockets).forEach((other_socket) => {
                         this.sockets[other_socket].emit('remove_peer', {'peer_id': socket.id});
