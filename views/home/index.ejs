@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/home/css/home.css">
-    <script src="scripts/jquery/dist/jquery.min.js"></script>
-    <script src="/home/js/helper.js"></script>
+    <link rel="stylesheet" href="/static/home/css/home.css">
+    <script>
+        let onError = ('<%= onerror%>' === 'true');
+        if (onError) {
+            alert('Комната несуществует.')
+        }
+    </script>
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <script src="/static/home/js/helper.js"></script>
 </head>
+<body>
 <div class="main">
     <div class="main_header">
         <h1 class="mafia-online">MAFIA ONLINE</h1>
@@ -17,7 +24,7 @@
     </div>
 </div>
 <div class="bottom">
-    <img class="mafia_pic" src="/home/img/logo.jpg">
+    <img class="mafia_pic" src="/static/home/img/logo.jpg">
 </div>
 </body>
 </html>

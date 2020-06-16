@@ -11,17 +11,7 @@
     <script>
         let ROOM_ID = '<%= room_id %>'
     </script>
-    <script src="/static/room/js/presenter-peer.js"></script>
-    <script src="/static/room/js/game.js"></script>
-    <style>
-        video {
-            object-fit: cover;
-            width: 250px;
-            height: 150px;
-            border-radius: 10px
-        }
-
-    </style>
+    <script src="/static/room/js/default-peer.js"></script>
 </head>
 <body>
 <div class="top_header">
@@ -38,14 +28,6 @@
     <div class="video_element c5 text-center"></div>
     <div class="video_element c6 text-center"></div>
     <div class="video_element c7 text-center"></div>
-</div>
-<div class="bottom">
-    <div class="menu">
-        <button class="set-night">SET NIGHT</button>
-        <button class="set-day">SET DAY</button>
-        <button class="start">START</button>
-        <button class="stop">STOP</button>
-    </div>
 </div>
 </body>
 </html>
